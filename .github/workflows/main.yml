@@ -19,5 +19,5 @@ jobs:
       - name: Audit dependencies
         uses: khoiuna/packj-action@main
         with:
-          DEPENDENCY_FILES: pypi:requirements.txt npm:package.json
+          DEPENDENCY_FILES: npm:package.json
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
