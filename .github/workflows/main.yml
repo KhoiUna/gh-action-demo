@@ -1,0 +1,23 @@
+name: Packj Audit GitHub Action Demo
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  packj-security-audit:
+    permissions:
+      contents: read
+      pull-requests: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Run audit triggered automatically by a ${{ github.event_name }} event."
+
+      - name: Audit dependencies
+        uses: khoiuna/packj-action@main
+        with:
+          DEPENDENCY_FILES: pypi:requirements.txt npm:package.json
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
